@@ -1,0 +1,15 @@
+---
+- name: install sysstat
+  yum:
+    name: sysstat
+    state: present
+
+- name: install dstat
+  yum:
+    name: dstat
+    state: present
+
+- name: install htop
+  yum:
+    name: htop
+    state: present

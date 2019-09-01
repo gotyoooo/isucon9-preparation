@@ -1,0 +1,6 @@
+---
+- name: Download and Unarchive alp_linux_amd64.zip
+  unarchive:
+    src: https://github.com/tkuchiki/alp/releases/download/v0.3.1/alp_linux_amd64.zip
+    dest: /usr/local/bin
+    remote_src: yes

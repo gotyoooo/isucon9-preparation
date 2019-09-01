@@ -1,0 +1,22 @@
+- service:
+    name: h2o
+    enabled: no
+    state: stopped
+
+- name: install nginx
+  yum:
+    name: nginx
+    state: present
+
+- copy:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: reload nginx
+
+- service:
+    name: nginx
+    enabled: yes
+    state: started

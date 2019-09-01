@@ -1,0 +1,30 @@
+---
+- hosts: all
+  become: yes
+  roles:
+    - role: '../roles/git'
+    - role: '../roles/monitoring_cmds'
+    - role: '../roles/sysctl_conf'
+      sysctl_conf:
+        kernel.panic: 5
+        net.core.somaxconn: 1024
+        net.core.netdev_max_backlog: 2048
+        net.ipv4.tcp_fin_timeout: 5
+        net.ipv4.ip_local_port_range: 1024 65535
+        net.ipv4.tcp_tw_recycle: 0
+        net.ipv4.tcp_tw_reuse: 1
+        net.ipv4.tcp_rmem: 4096 87380 8388608
+        net.ipv4.tcp_wmem: 4096 65536 6553600
+        net.core.rmem_max: 8388608
+        net.core.wmem_max: 6553600
+        vm.swappiness: 1
+        vm.overcommit_memory: 1
+        vm.max_map_count: 327650
+    - role: '../roles/limits_conf'
+      limits_domains:
+        - name: "*"
+          limits:
+            - soft nofile 65535
+            - hard nofile 65535
+            - soft nproc 65535
+            - hard nproc 65535
