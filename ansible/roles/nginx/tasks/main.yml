@@ -1,10 +1,5 @@
-- service:
-    name: h2o
-    enabled: no
-    state: stopped
-
 - name: install nginx
-  yum:
+  apt:
     name: nginx
     state: present
 
@@ -17,6 +12,6 @@
   notify: reload nginx
 
 - service:
-    name: nginx
+    apt: nginx
     enabled: yes
     state: started

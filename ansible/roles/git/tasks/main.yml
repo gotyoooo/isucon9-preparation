@@ -1,5 +1,5 @@
 ---
 - name: install git
-  yum:
+  apt:
     name: git
     state: present
