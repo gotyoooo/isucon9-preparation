@@ -1,10 +1,21 @@
 ---
-- name: Add percona yum repository
-  yum:
-    name: "http://www.percona.com/downloads/percona-release/redhat/0.1-6/percona-release-0.1-6.noarch.rpm"
-    state: present
+- name: Check if percona is installed
+  command: dpkg-query -W percona
+  register: percona_check_deb
+  failed_when: percona_check_deb.rc > 1
+  changed_when: percona_check_deb.rc == 1
+
+- name: Download percona repository
+  get_url:
+    url="https://repo.percona.com/apt/percona-release_latest.generic_all.deb"
+    dest="/tmp/percona-release_latest.generic_all.deb"
+  when: percona_check_deb.rc == 1
+
+- name: Install percona
+  apt: deb="/tmp/percona-release_latest.generic_all.deb"
+  when: percona_check_deb.rc == 1
 
 - name: install percona-toolkit
-  yum:
+  apt:
     name: percona-toolkit
     state: present
