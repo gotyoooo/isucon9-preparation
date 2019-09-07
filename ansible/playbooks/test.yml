@@ -5,6 +5,7 @@
   roles:
     - role: '../roles/ssh_keys_setting'
     - role: '../roles/git'
+    - role: '../roles/redis-server'
     - role: '../roles/monitoring_cmds'
     - role: '../roles/netdata'
       netdata_install_dir: /opt/netdata
