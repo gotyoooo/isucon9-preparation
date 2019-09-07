@@ -9,9 +9,9 @@
     owner: root
     group: root
     mode: 0644
-  notify: reload nginx
+  notify: restarted nginx.service
 
-- service:
-    apt: nginx
+- systemd:
+    name: nginx.service
     enabled: yes
     state: started

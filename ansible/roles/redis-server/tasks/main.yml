@@ -9,9 +9,8 @@
     owner: root
     group: root
     mode: 0644
-  notify: reload redis-server
 
-- service:
-    apt: redis-server
+- systemd:
+    name: redis-server.service
     enabled: yes
     state: started
