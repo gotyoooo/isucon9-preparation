@@ -57,3 +57,14 @@ resource "alicloud_security_group_rule" "isucon9_allow_netdata" {
   security_group_id = "${alicloud_security_group.isucon9.id}"
   cidr_ip           = "0.0.0.0/0"
 }
+
+resource "alicloud_security_group_rule" "isucon9_allow_admin" {
+  type              = "ingress"
+  ip_protocol       = "tcp"
+  nic_type          = "intranet"
+  policy            = "accept"
+  port_range        = "6000/6100"
+  priority          = 10
+  security_group_id = "${alicloud_security_group.isucon9.id}"
+  cidr_ip           = "0.0.0.0/0"
+}
