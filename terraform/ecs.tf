@@ -19,3 +19,11 @@ resource "alicloud_instance" "isucon9_test" {
   security_groups = ["${alicloud_security_group.isucon9.id}"]
   vswitch_id      = "${var.vswitch_id}"
 }
+
+output "isucon9_test_id" {
+  value = "${alicloud_instance.isucon9_test.id}"
+}
+
+output "isucon9_test_ip" {
+  value = "${alicloud_instance.isucon9_test.public_ip}"
+}
