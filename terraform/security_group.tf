@@ -46,3 +46,14 @@ resource "alicloud_security_group_rule" "isucon9_allow_ssh" {
   security_group_id = "${alicloud_security_group.isucon9.id}"
   cidr_ip           = "0.0.0.0/0"
 }
+
+resource "alicloud_security_group_rule" "isucon9_allow_netdata" {
+  type              = "ingress"
+  ip_protocol       = "tcp"
+  nic_type          = "intranet"
+  policy            = "accept"
+  port_range        = "19999/19999"
+  priority          = 10
+  security_group_id = "${alicloud_security_group.isucon9.id}"
+  cidr_ip           = "0.0.0.0/0"
+}
