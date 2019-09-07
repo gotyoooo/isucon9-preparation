@@ -1,11 +1,8 @@
 [all]
-isu1
-isu2
-isu3
 
 [web]
-isu2
-isu1
 
 [db]
-isu3
+
+[test]
+47.74.7.52
