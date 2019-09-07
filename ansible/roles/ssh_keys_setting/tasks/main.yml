@@ -1,0 +1,13 @@
+- name: Add isucon user authorized_key
+  authorized_key:
+    user: isucon
+    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCLqv3pA2P09T7nUhY/7MybPTacMwZZDxvrd+iHJXEAIfhCZ8acEj3Ey0/EctMKpkODjta+QiTZecZFQ25SxvTsShVNAu73aD2vujeuBs+kDVXKjxC/uoZT9v5IJ28wYytc3/ukvHGrOAF35Qq9BoNheF2X/2asDG+DNl/IPUmVUYVqtxe51S2fzZ9ptrPt4jh7T4jl3KGFMymG1EdtgB+LbLo/145KAGZ0LF7ziLrTbQuT8EEkCsZViG7lwURyWJAaZIoR5M2dHxaAzZbxIM55dK/iehqX/kgTKNwgtuiaDarqiJLeEBmL9Wyj5Jr0P4hXQS0k/oDk4/nq1dZrLiyH"
+    state: present
+
+- name: Add isucon user isucon9.pem
+  copy:
+    src: isucon9.pem
+    dest: /home/isucon/.ssh/id_rsa
+    owner: isucon
+    group: isucon
+    mode: 0600

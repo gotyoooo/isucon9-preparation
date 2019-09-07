@@ -3,6 +3,7 @@
   remote_user: root
   become: yes
   roles:
+    - role: '../roles/ssh_keys_setting'
     - role: '../roles/git'
     - role: '../roles/monitoring_cmds'
     - role: '../roles/netdata'
