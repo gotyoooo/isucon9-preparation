@@ -5,4 +5,6 @@
       - sysstat
       - dstat
       - htop
+      - tcpdump
+      - ngrep
     state: present
